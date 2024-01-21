@@ -1992,11 +1992,222 @@ Used by [MNU_Text_IdList](#mnu_text_idlist) to link to bdat files. **Possibly un
 
 ---
 
+## Journal / Quests
+
+### JNL_PClinelist
+
+*Human Readable Name*: **Journal - Playable Character - Line list**
+
+No code references - Appears unused in XC1:DE.
+
+---
+
+### JNL_PCrelatelist
+
+*Human Readable Name*: **Journal - Playable Character - Relation List**
+
+No code references - Appears unused in XC1:DE.
+
+---
+
+### JNL_playaward
+
+*Human Readable Name*: **Journal - Play Awards/Achievements**
+
+`MsTextId` linked to `JNL_playaward_ms`.
+
+List of achievements/awards & their rewards.
+
+| Column      | Type      | Description                | Handled by |
+|-------------|-----------|----------------------------|------------|
+| `title`     | `MsTextId`| Localized award name.      | `game::MenuPartsInfo::open` | 
+| `exp`       | `uint16`  | EXP on completion.         | `game::DataUtil::addExpApSpForPlayaward` | 
+| `clearflg`  | `uint8`   | ?                          | | 
+
+---
+
+### JNL_questXXYY
+
+*Human Readable Name*: **Journal - Quests**
+
+`JNL_questlistXXYY` where:
+
+* `XX` - Chapter ID
+* `YY` - Location ID
+
+`MsTextId` linked to `JNL_questXXYY_ms`.
+
+List of quests per area. Quests should also be present in [bdat_qts](#qst_questList/bdat_qts).
+
+| Column         | Type      | Description                | Handled by |
+|----------------|-----------|----------------------------|------------|
+| `title`        | `MsTextId`| Quest title.               | `game::MenuGameQuestAcc::getTitle`, `game::MenuGameQuestAcc::isDeepCheck` | 
+| `qst_genre`    | `uint8`   | Quest Genre. 0-3.          | `game::MenuGameQuestAcc::getQuestType` & more | 
+| `non_auto`     | `uint8`   | Whether this is a non automatic completion quest. | Too many. | 
+| `reward_mes`   | `uint8`   | How the reward message is displayed. 0-3. | `game::MenuGameQuestAcc::getRewardShowType` | 
+| `npc_id`       | `uint16`  | [NPC ID](#fld_npclist).    | `game::MenuGameQuestAcc::getNpcId` & more | 
+| `no_map`       | `uint8`   | Mapping number aka quest display sort index. | `game::MenuGameQuestAcc::getMapSortKey` |
+| `force`        | `uint8`   | Whether the quest is forced, it cannot be discarded upon display. | `game::MenuGameQuestAcc::isForce` |
+| `mes_accept`   | `uint8`   | Message when accepting. Appears unused |  |
+| `mes_refuse`   | `uint8`   | Message when refusing. Appears unused  |  |
+| `flg_s`        | `uint16`  | Scenario flag for this quest.          | `game::GimmickMarker::checkJNLQuestCnd`, `game::QuestUtil::canAcceptOrder`  |
+| `cnd_questID`  | `uint16`  | Required Quest ID completion for this quest.  | `game::QuestUtil::canAcceptOrder` |
+| `cnd_famous`   | `uint16`  | Required area reputation for this quest.      | `game::QuestUtil::canAcceptOrder` |
+| `npcmeetID1`   | `uint16`  | Required [NPC](#fld_npclist) #1 met for this quest.  | `game::QuestUtil::canAcceptOrder` |
+| `flg_relate`   | `uint16`  | Relation/Affinity [JNL_relatelist](#jnl_relatelist) ID.  | `game::QuestUtil::canAcceptOrder` |
+| `cnd_relate`   | `uint8`   | Required relation/affinity (based on provided ID).      | `game::QuestUtil::canAcceptOrder` |
+| `up_questID`   | `uint16`  | Mututally exclusive quest #1.   | `game::QuestManager::setupQuest` |
+| `up_questID2`  | `uint16`  | Mututally exclusive quest #2.   | `game::QuestManager::setupQuest` |
+| `no_report`    | `uint8`   | Unknown. Possibly no notification?   | `game::MenuGameQuestAcc::getTaskInfo` & more |
+| `reward_A1`    | `uint16`  | [Item ID](#itm_itemlist) Branch A - Reward #1 | `game::MenuGameQuestAcc::getRewardItemId`, ` game::MenuGameQuestAcc::getRewardItemName` |
+| `reward_A2`    | `uint16`  | [Item ID](#itm_itemlist) Branch A - Reward #2 | `game::MenuGameQuestAcc::getRewardItemId`, ` game::MenuGameQuestAcc::getRewardItemName` |
+| `reward_A3`    | `uint16`  | [Item ID](#itm_itemlist) Branch A - Reward #3 | `game::MenuGameQuestAcc::getRewardItemId`, ` game::MenuGameQuestAcc::getRewardItemName` |
+| `reward_B1`    | `uint16`  | [Item ID](#itm_itemlist) Branch B - Reward #1 | `game::MenuGameQuestAcc::getRewardItemId`, ` game::MenuGameQuestAcc::getRewardItemName` |
+| `reward_B2`    | `uint16`  | [Item ID](#itm_itemlist) Branch B - Reward #2 | `game::MenuGameQuestAcc::getRewardItemId`, ` game::MenuGameQuestAcc::getRewardItemName` |
+| `reward_B3`    | `uint16`  | [Item ID](#itm_itemlist) Branch B - Reward #3 | `game::MenuGameQuestAcc::getRewardItemId`, ` game::MenuGameQuestAcc::getRewardItemName` |
+| `reward_exp`   | `uint16`  | EXP reward on completion.                     | `game::MenuGameQuestAcc::getRewardExp` |
+| `reward_money` | `uint16`  | Money reward on completion.                   | `game::MenuGameQuestAcc::getRewardMoney` |
+| `order_succ_A` | `uint16`  | Whether quest conditions have to be done in order (Branch A) | ` game::MenuGameQuestAcc::isOrderSucc` |
+| `type_succ_A1` | `uint8`   | Quest Step #1 Type (Branch A) |  |
+| `cnd_succ_A1`  | `uint16`  | Quest Step #1 Value/Condition - Depends on type. (Branch A) |  |
+| `num_succ_A1`  | `uint8`   | Quest Step #1 Number Required (Branch A) |  |
+| `hnd_succ_A1`  | `uint8`   | Unused. |  |
+| `type_succ_A2` | `uint8`   | Quest Step #2 Type (Branch A) |  |
+| `cnd_succ_A2`  | `uint16`  | Quest Step #2 Value/Condition - Depends on type. (Branch A) |  |
+| `num_succ_A2`  | `uint8`   | Quest Step #2 Number Required (Branch A) |  |
+| `hnd_succ_A2`  | `uint8`   | Unused. |  |
+| `type_succ_A3` | `uint8`   | Quest Step #3 Type (Branch A) |  |
+| `cnd_succ_A3`  | `uint16`  | Quest Step #3 Value/Condition - Depends on type. (Branch A) |  |
+| `num_succ_A3`  | `uint8`   | Quest Step #3 Number Required (Branch A) |  |
+| `hnd_succ_A3`  | `uint8`   | Unused. |  |
+| `type_succ_A4` | `uint8`   | Quest Step #4 Type (Branch A) |  |
+| `cnd_succ_A4`  | `uint16`  | Quest Step #4 Value/Condition - Depends on type. (Branch A) |  |
+| `num_succ_A4`  | `uint8`   | Quest Step #4 Number Required (Branch A) |  |
+| `hnd_succ_A4`  | `uint8`   | Unused. |  |
+| `type_succ_B1` | `uint8`   | Quest Step #1 Type (Branch B) |  |
+| `cnd_succ_B1`  | `uint16`  | Quest Step #1 Value/Condition - Depends on type. (Branch B) |  |
+| `num_succ_B1`  | `uint8`   | Quest Step #1 Number Required (Branch B) |  |
+| `hnd_succ_B1`  | `uint8`   | Unused. |  |
+| `type_succ_B2` | `uint8`   | Quest Step #2 Type (Branch B) |  |
+| `cnd_succ_B2`  | `uint16`  | Quest Step #2 Value/Condition - Depends on type. (Branch B) |  |
+| `num_succ_B2`  | `uint8`   | Quest Step #2 Number Required (Branch B) |  |
+| `hnd_succ_B2`  | `uint8`   | Unused. |  |
+| `type_succ_B3` | `uint8`   | Quest Step #3 Type (Branch B) |  |
+| `cnd_succ_B3`  | `uint16`  | Quest Step #3 Value/Condition - Depends on type. (Branch B) |  |
+| `num_succ_B3`  | `uint8`   | Quest Step #3 Number Required (Branch B) |  |
+| `hnd_succ_B3`  | `uint8`   | Unused. |  |
+| `type_succ_B4` | `uint8`   | Quest Step #4 Type (Branch B) |  |
+| `cnd_succ_B4`  | `uint16`  | Quest Step #4 Value/Condition - Depends on type. (Branch B) |  |
+| `num_succ_B4`  | `uint8`   | Quest Step #4 Number Required (Branch B) |  |
+| `hnd_succ_B4`  | `uint8`   | Unused. |  |
+| `up_famous_A1` | `uint16`  | Area Reputation increase (Branch A). | `game::MenuGameQuestAcc::getFamousInfo` |
+| `flg_relate_A1`| `uint16`  | Relation/Affinity [JNL_relatelist](#jnl_relatelist) change #1 on completion. (Branch B) |  |
+| `up_relate_A1`   | `uint8`   | How much relation/affinity #1 increases by. (Branch B) |  |
+| `flg_relate_A2`| `uint16`  | Relation/Affinity [JNL_relatelist](#jnl_relatelist) change #2 on completion. (Branch B) |  |
+| `up_relate_A2`   | `uint8`   | How much relation/affinity #2 increases by. (Branch B) |  |
+| `flg_relate_A3`| `uint16`  | Relation/Affinity [JNL_relatelist](#jnl_relatelist) change #3 on completion. (Branch B) |  |
+| `up_relate_A3`   | `uint8`   | How much relation/affinity #3 increases by. (Branch B) |  |
+| `flg_relate_A4`| `uint16`  | Relation/Affinity [JNL_relatelist](#jnl_relatelist) change #4 on completion. (Branch B) |  |
+| `up_relate_A4`   | `uint8`   | How much relation/affinity #4 increases by. (Branch B) |  |
+| `up_famous_B1` | `uint16`  | Area Reputation increase (Branch B). | `game::MenuGameQuestAcc::getFamousInfo` |
+| `flg_relate_B1`| `uint16`  | Relation/Affinity [JNL_relatelist](#jnl_relatelist) change #1 on completion. (Branch B) |  |
+| `up_relate_B1`   | `uint8`   | How much relation/affinity #1 increases by. (Branch B) |  |
+| `flg_relate_B2`| `uint16`  | Relation/Affinity [JNL_relatelist](#jnl_relatelist) change #2 on completion. (Branch B) |  |
+| `up_relate_B2`   | `uint8`   | How much relation/affinity #2 increases by. (Branch B) |  |
+| `flg_relate_B3`| `uint16`  | Relation/Affinity [JNL_relatelist](#jnl_relatelist) change #3 on completion. (Branch B) |  |
+| `up_relate_B3`   | `uint8`   | How much relation/affinity #3 increases by. (Branch B) |  |
+| `flg_relate_B4`| `uint16`  | Relation/Affinity [JNL_relatelist](#jnl_relatelist) change #4 on completion. (Branch B) |  |
+| `up_relate_B4`   | `uint8`   | How much relation/affinity #4 increases by. (Branch B) |  |
+
+!!! abstract "`qst_genre` / Quest Genre"
+
+    * 0 = Normal
+    * 1 = Story
+    * 2 = Unknown
+    * 3 = Timed
+
+!!! note "Quest Type"
+
+    * 1 = Defeat [Enemy](#btl_enelist)
+    * 2 = [Item](#itm_itemlist) required
+    * 3 = Talk to [NPC](#fld_npclist)
+    * 4 = Branching Quest, Quest IDs
+    * 5 = Use gimmick/field object?
+
+!!! tip "Reputation Increase Area"
+
+    Depends on NPC ID and it's landmark location from [landmarklist](#landmarklist). `mapID` is then used.
+
+    Then, the area is grabbed using the map ID using `game::MenuGameDataMapUtil::GetMapAreaIdFromMapId` - Hardcoded table.
+
+---
+
+### JNL_relatelist
+
+*Human Readable Name*: **Journal - Relation/Affinity Link Listing**
+
+`MsTextId` linked to `JNL_relatelist_ms`.
+
+List of all the affinity links. Referenced through [FLD_npclist](#fld_npclist)->`rlt_face`.
+
+| Column      | Type      | Description                | Handled by |
+|-------------|-----------|----------------------------|------------|
+| `pain1`     | `string`  | Used for searching. Must be 6 chars for 2 NPCs.  | `game::MenuPartsKizunagramWorldView::setupBdat` | 
+| `pain_txt1` | `string`  | Possibly unused?           | | 
+| `pain_txt2` | `string`  | Possibly unused?           | | 
+| `caption1`  | `uint16`  | Localized caption 1.       | `game::MenuPartsKizunagramWorldView::setActivationRelateMarker` | 
+| `caption2`  | `uint16`  | Localized caption 2.       | `game::MenuPartsKizunagramWorldView::setActivationRelateMarker` | 
+| `caption3`  | `uint16`  | Localized caption 3.       | `game::MenuPartsKizunagramWorldView::setActivationRelateMarker` | 
+| `caption4`  | `uint16`  | Localized caption 4.       | `game::MenuPartsKizunagramWorldView::setActivationRelateMarker` | 
+| `caption5`  | `uint16`  | Localized caption 5.       | `game::MenuPartsKizunagramWorldView::setActivationRelateMarker` | 
+| `npc_id_1a` | `uint16`  | [NPC ID](#fld_npclist) 1 A | `game::MenuManager::onDataFlagChanged` | 
+| `npc_id_1b` | `uint16`  | [NPC ID](#fld_npclist) 1 B | `game::MenuManager::onDataFlagChanged` | 
+| `npc_id_1c` | `uint16`  | [NPC ID](#fld_npclist) 1 C | `game::MenuManager::onDataFlagChanged` | 
+| `npc_id_2a` | `uint16`  | [NPC ID](#fld_npclist) 2 A | `game::MenuManager::onDataFlagChanged` | 
+| `npc_id_2b` | `uint16`  | [NPC ID](#fld_npclist) 2 B | `game::MenuManager::onDataFlagChanged` | 
+| `npc_id_2c` | `uint16`  | [NPC ID](#fld_npclist) 2 C | `game::MenuManager::onDataFlagChanged` | 
+
+---
+
+### JNL_relatepoint
+
+*Human Readable Name*: **Journal - Relation/Heart-to-Heart Points**
+
+List of all the Heart-to-Hearts.
+
+| Column        | Type      | Description                | Handled by |
+|---------------|-----------|----------------------------|------------|
+| `pain`        | `string`  | Used for searching. Must be 6 chars for 2 NPCs.  | `game::MenuPartsReviveColony6List::setupHintMode` | 
+| `translate_x` | `int16`   | X Translation              | | 
+| `translate_y` | `int16`   | Y Translation              | | 
+| `rotate_z`    | `int16`   | Z Rotaton                  | | 
+| `scale_x`     | `int16`   | X Scale                    | | 
+| `scale_y`     | `int16`   | Y Scale                    | | 
+| `size_x`      | `int16`   | X Size                     | | 
+| `size_y`      | `int16`   | Y Size                     | | 
+
+
+---
+
+### JNL_trustup
+
+*Human Readable Name*: **Journal - Relation/Heart-to-Heart Points**
+
+List of trust/affinity increases during NPC talks (referenced with the `[XENO:trust]` tag).
+
+| Column        | Type      | Description                | Handled by |
+|---------------|-----------|----------------------------|------------|
+| `trust_up`    | `int16`   | Affinity increase.         | `game::MenuSeqTalkBalloon::setTalkMessage` | 
+
+---
+
 ## Colony 6 Restoration
 
 ### CL6_hintlist
 
 *Human Readable Name*: **Conly 6 - Hint List**
+
+`MsTextId` linked to `CL6_hintlist`.
 
 List of Colony 6 restoration hints.
 
@@ -2038,6 +2249,14 @@ Colony 6 restoration material requirements.
 | `number4`   | `uint16`  | Number of items 4.                | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
 | `material5` | `uint16`  | [Item ID](#itm_itemlist) 5.       | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
 | `number5`   | `uint16`  | Number of items 5.                | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+
+---
+
+### CL6_revivallist
+
+*Human Readable Name*: **Colony 6 - Revival List**
+
+Unknown where this is used/read - possibly unused.
 
 ---
 

@@ -13,6 +13,7 @@ List of weird functions to investigate or do excessive hardcoding
 * Check `game::DataUtil::isMonadoShulk`
 * Check `game::DataUtil::calcExpApSpForBattle`
 * Check `game::MenuPartsReviveColony6Util::incrementRevivalLevel` - hardcoded levels
+* Check `game::DataUtil::isRevivalCol6Enabled`
 
 * `game::SeqMapJump::resoterTreasureBox` 32 boxes
 game::DataBdat::setupFp
