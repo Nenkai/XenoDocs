@@ -7,6 +7,7 @@
 * Ene - Enemy
 * EXC - Exchange
 * FLD - Field
+* Grow - Level Up
 * JNL - Journal
 * Kizunagram - Name of the affinity chart menu
 * Kb - Knockback
@@ -20,6 +21,7 @@
 * MsTextId - Localized text entry ID
 * MSProj - Monolith Soft Font Projects - Sets up font icons & other properties?
 * NPC - Non-Playable Character
+* PS - Passive
 * PC - Playable Character
 * RLT - Relate/Relation
 * Scn - Scene?

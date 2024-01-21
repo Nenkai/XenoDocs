@@ -617,6 +617,323 @@ List of resource groups.
 
 ---
 
+## Battle
+
+### BTL_GimmickBossRescue
+
+*Human Readable Name*: **Battle - Gimmick Boss Rescue**
+
+`MsTextId` linked to `BTL_GimmickBossRescue_ms`.
+
+Used to display tutorial messages & provide boss help.
+
+| Column           | Type      | Description                          | Handled by |
+|------------------|-----------|--------------------------------------|------------|
+| `eneID`          | `uint16`  | [Battle Enemy ID](#btl_enelist).     | `game::BossRescueManager::setData`  |
+| `S_FLG_MIN`      | `uint16`  | Minimum scenario.                    | `game::BossRescueManager::setData` | 
+| `S_FLG_MAX`      | `uint16`  | Maximum scenario.                    | `game::BossRescueManager::setData` | 
+| `popTime`        | `uint16`  | Time before displaying.              | `game::BossRescueManager::setData` | 
+| `listTime`       | `uint16`  | Unknown.                             | `game::BossRescueManager::setData` | 
+| `listID1`        | `uint16`  | [Tutorial ID](#mnu_ttrl) 1.                       | `game::BossRescueManager::setData` | 
+| `listID2`        | `uint16`  | [Tutorial ID](#mnu_ttrl) 2.                       | `game::BossRescueManager::setData` | 
+| `listID3`        | `uint16`  | [Tutorial ID](#mnu_ttrl) 3.                       | `game::BossRescueManager::setData` | 
+| `listID4`        | `uint16`  | [Tutorial ID](#mnu_ttrl) 4.                       | `game::BossRescueManager::setData` | 
+| `listID5`        | `uint16`  | [Tutorial ID](#mnu_ttrl) 5.                       | `game::BossRescueManager::setData` | 
+| `listID6`        | `uint16`  | [Tutorial ID](#mnu_ttrl) 6.                       | `game::BossRescueManager::setData` | 
+| `listID7`        | `uint16`  | [Tutorial ID](#mnu_ttrl) 7.                       | `game::BossRescueManager::setData` | 
+| `listID8`        | `uint16`  | [Tutorial ID](#mnu_ttrl) 8.                       | `game::BossRescueManager::setData` | 
+| `rescueType1`    | `uint8`   | Rescue Type 1.                       | `game::BossRescueManager::setData` | 
+| `rescueType2`    | `uint8`   | Rescue Type 2.                       | `game::BossRescueManager::setData` | 
+| `rescueType3`    | `uint8`   | Rescue Type 3.                       | `game::BossRescueManager::setData` | 
+| `rescueType4`    | `uint8`   | Rescue Type 4.                       | `game::BossRescueManager::setData` | 
+| `resTextID`      | `MsTextId`| Localized prompt text.               |  | 
+| `resTextSel01ID` | `MsTextId`| Localized prompt selection option 1. |  | 
+| `resTextSel02ID` | `MsTextId`| Localized prompt selection option 2. |  | 
+
+!!! abstract "`rescue_type`"
+
+    * 1 = Full HP
+    * 2 = Full Party Gauge
+    * 3 = Arts recharged
+    * 4 = Max Talent Gauge
+
+---
+
+### BTL_PSSlist
+
+*Human Readable Name*: **Battle - Passive Skill List**
+
+`MsTextId` linked to `BTL_PSSlist_ms`.
+
+Linked from [BTL_PSVskill](#btl_psvlist).
+
+Used to display tutorial messages & provide boss help.
+
+| Column           | Type      | Description                          | Handled by |
+|------------------|-----------|--------------------------------------|------------|
+| `name`           | `MsTextId`| Localized passive name.              |  |
+| `val_type`       | `uint8`   | Value type.                          | `game::DataPassiveSkill::setup` | 
+
+!!! abstract "`val_type`"
+
+    * 0 = normal - `rect_text_UnitNormal_mc`
+    * 1 = red - `rect_text_UnitMinus_mc`
+    * 2 = blue - `rect_text_UnitNum_mc`
+    * 3 = green - `rect_text_UnitNormal2_mc`
+
+---
+
+### BTL_PSVlink
+
+*Human Readable Name*: **Battle - Passive Skill Branch Links**
+
+Passive links skill branch skills to skill specific values.
+
+| Column           | Type      | Description                          | Handled by |
+|------------------|-----------|--------------------------------------|------------|
+| `skill`          | `uint8`   | [Passive Skill ID](#btl_psslist).    |  |
+| `val1`           | `uint8`   | Skill Specific Value/% 1.            | `game::DataPassiveSkill::getSkillParams` | 
+| `val2`           | `uint8`   | Skill Specific Value/% 2.            | `game::DataPassiveSkill::getSkillParams` | 
+| `val3`           | `uint8`   | Skill Specific Value/% 3.            | `game::DataPassiveSkill::getSkillParams` | 
+| `val4`           | `uint8`   | Skill Specific Value/% 4.            | `game::DataPassiveSkill::getSkillParams` | 
+| `val5`           | `uint8`   | Skill Specific Value/% 5.            | `game::DataPassiveSkill::getSkillParams` | 
+| `val6`           | `uint8`   | Skill Specific Value/% 6.            | `game::DataPassiveSkill::getSkillParams` | 
+| `flag`           | `uint8`   | Unknown.                             | `game::DataPassiveSkill::setup` | 
+
+
+---
+
+### BTL_PSVskill
+
+*Human Readable Name*: **Battle - Passive Skill Branch Skills**
+
+`MsTextId` linked to `BTL_PSVskill_ms`.
+
+List of passive skill branch skills.
+
+| Column           | Type      | Description                          | Handled by |
+|------------------|-----------|--------------------------------------|------------|
+| `name`           | `MsTextId`| Localized passive name.              |  |
+| `shape`          | `uint8`   | Skill Display Shape                  | `game::MenuGameDataPassiveSkill::getShape` |
+| `target`         | `uint8`   | Target. 1 = Always, 2 = Field only   | `game::MenuGameDataPassiveSkill::getTarget` | 
+| `skill`          | `uint8`   | [Passive Skill ID](#btl_psslist).    |  |
+| `val1`           | `uint8`   | Skill Specific Value/% 1.            | `game::DataPassiveSkill::getSkillParams` | 
+| `val2`           | `uint8`   | Skill Specific Value/% 2.            | `game::DataPassiveSkill::getSkillParams` | 
+| `time`           | `uint8`   | Time.                                | `game::DataPassiveSkill::getSkillParams` | 
+| `point_PP`       | `uint8`   | SP Cost (Multiply by 10)             | `game::DataPassiveSkill::getSkillParams` | 
+| `point_SP`       | `uint8`   | Affinity Coin Cost.                  | `game::DataPassiveSkill::setup` | 
+| `flag`           | `uint8`   | Unknown.                             | | 
+
+!!! abstract "`shape`"
+
+    * 1 = Circle
+    * 2 = Square
+    * 3 = Hexagon
+    * 4 = Star
+    * 5 = Diamond
+
+!!! warning
+    `point_PP` and `point_SP` are kind of swapped around. `point_PP` is the SP cost while `point_SP` is the link/affinity coin cost.
+
+---
+
+### BTL_bufflist
+
+*Human Readable Name*: **Battle - Buffs List**
+
+`MsTextId` linked to `BTL_bufflist_ms`.
+
+List of (de)buffs.
+
+| Column      | Type      | Description                              | Handled by |
+|-------------|-----------|------------------------------------------|------------|
+| `elem`      | `uint8`   | Buff Element.                            | `game::BattleDamageCalcurator::calcCounterSpike`, `game::IntervalStatusEffect::sendMsgSpikeEff`, `game::AIActionExecutor::fltTarget` |
+| `name`      | `MsTextId`| Localized name.                         |  |
+| `icon`      | `uint16`  | [SYS_filelist_ex ID](#SYS_filelist_ex). | `game::MenuPartsInfo::open` | 
+| `help`      | `MsTextId`| Localized caption.                      | `game::MenuSeqPopupInfo::onTick` |
+| `name_dbg`  | `string`  | Debug name, unused.                     |  |
+
+---
+
+### BTL_camlist
+
+*Human Readable Name*: **Battle - Chain Attack Camera List**
+
+Battle Chain Attack cameras.
+
+Used by `game::ChainAttackCamera::lotCameraDataID`.
+
+| Column      | Type      | Description          | Handled by |
+|-------------|-----------|----------------------|------------|
+| `camType`   | `uint8`   |                      | `game::ChainAttackCamera::lotCameraDataID`|
+| `range`     | `uint8`   |                      |  |
+| `enemy_size`| `uint8`   |                      | `game::MenuPartsInfo::open` | 
+| `cam_name1` | `uint8`   | [Camera Data ID](#btl_camdatalist) 1. | `game::BdatBtlCamList::cam_name1` |
+| `rate1`     | `uint8`   | % chance of camera #1 occuring.       | `game::BdatBtlCamList::rate1` |
+| `cam_name2` | `uint8`   | [Camera Data ID](#btl_camdatalist) 2. | `game::BdatBtlCamList::cam_name2` |
+| `rate2`     | `uint8`   | % chance of camera #2 occuring.       | `game::BdatBtlCamList::rate2` |
+| `cam_name3` | `uint8`   | [Camera Data ID](#btl_camdatalist) 3. | `game::BdatBtlCamList::cam_name3` |
+| `rate3`     | `uint8`   | % chance of camera #3 occuring.       | `game::BdatBtlCamList::rate3` |
+| `cam_name4` | `uint8`   | [Camera Data ID](#btl_camdatalist) 4. | `game::BdatBtlCamList::cam_name4` |
+| `rate4`     | `uint8`   | % chance of camera #4 occuring.       | `game::BdatBtlCamList::rate4` |
+
+---
+
+### BTL_camdatalist
+
+*Human Readable Name*: **Battle - Camera Data List**
+
+Battle Chain Attack camera data.
+
+Used by `game::ChainAttackCamera::setup`.
+
+TODO
+
+---
+
+### BTL_crystallist
+
+*Human Readable Name*: **Battle - Crystal List**
+
+`MsTextId` linked to `BTL_crystallist_ms`.
+
+List of monster crystal names. Referenced by [BTL_enelist](#btl_enelist)->c_name_id.
+
+| Column   | Type      | Description         | Handled by |
+|----------|-----------|---------------------|------------|
+| `name`   | `MsTextId`| Localized name.     | `game::DataUtil::getItemName`, `game::DataUtil::getItemNameSortKey`  |
+
+---
+
+### BTL_enelist
+
+*Human Readable Name*: **Battle - Enemy List**
+
+`MsTextId` linked to `BTL_enelist_ms`.
+
+List of monster crystal names. Referenced by [BTL_enelist](#btl_enelist)->c_name_id.
+
+| Column            | Type      | Description                          | Handled by |
+|-------------------|-----------|--------------------------------------|------------|
+| `name`            | `MsTextId`| Localized enemy name.                | `game::DataUtil::getItemName`, `game::DataUtil::getItemNameSortKey`  |
+| `resource`        | `uint16`  | [Resource ID](#kp_list).             | `game::DataUtil::getItemName`, `game::DataUtil::getItemNameSortKey`  |
+| `name`            | `uint8`   | [Crystal List ID](#btl_crystallist)  | `game::DataUtil::getItemName`, `game::DataUtil::getItemNameSortKey`  |
+| `mnu_vision_face` | `uint16`  | Menu Vision Face [SYS_filelist_ex](#sys_filelist_ex) ID.   | `game::DataUtil::getItemName`, `game::DataUtil::getItemNameSortKey`  |
+
+---
+
+### BTL_growlist
+
+*Human Readable Name*: **Battle - Level Ups**
+
+Level up requirements and rewards.
+
+| Column            | Type      | Description                          | Handled by |
+|-------------------|-----------|--------------------------------------|------------|
+| `level_exp`       | `MsTextId`| Localized enemy name.                | `game::calcLvup`  |
+| `en_exp`          | `uint16`  | EXP earned for defeating an enemy at the same level range.  | `game::DataUtil::calcExpApSpForBattle`  |
+| `en_ap`           | `uint8`   | AP earned for defeating an enemy at the same level range.   | `game::DataUtil::calcExpApSpForBattle`  |
+
+---
+
+## Battle (Future Connected)
+
+### BTL_kiriEnemyList
+
+*Human Readable Name*: **Battle - Kiri Enemy List**
+
+Unknown. Referenced by searching `model_id` through `KP_list`->model.
+
+| Column            | Type      | Description                          | Handled by |
+|-------------------|-----------|--------------------------------------|------------|
+| `model_id`        | `string`  | Model id, used as a search index.    | `game::BehaviorNpc::setupForLoaded`, `game::StateAppearEnemy::execAppear`  |
+| `is_common_pack`  | `uint8`   | Unknown.                             | `game::BehaviorNpc::setupForLoaded`, `game::StateAppearEnemy::execAppear`  |
+| `eff_id`          | `uint16`  | Unknown.                             | `game::BehaviorNpc::setupForLoaded`, `game::StateAppearEnemy::execAppear`  |
+
+---
+
+
+### BTL_meliaScenarioKiriEnemy
+
+*Human Readable Name*: **Battle - Melia/Future Connected Kiri Enemy**
+
+Unknown. Hardcoded row IDs (to 17) in code.
+
+| Column            | Type      | Description                          | Handled by |
+|-------------------|-----------|--------------------------------------|------------|
+| `param`           | `float`   | Unknown.                             | `game::ModelComponent::updateKiriEnemyparticleEffect`  |
+
+---
+
+### BTL_meliaScenarioParam
+
+*Human Readable Name*: **Battle - Melia/Future Connected Param**
+
+Unknown. Related to future connected. - Hardcoded row IDs (to 7) in code.
+
+| Column  | Type      | Description   | Handled by |
+|---------|-----------|---------------|------------|
+| `val`   | `uint16`  | XP/SP value.  | `game::DataUtil::addExpApSpForBattle`, `game::SeqFieldTalk::waitCloseTalkBalloonForPcTalk`  |
+
+---
+
+### BTL_noponAllAtk
+
+*Human Readable Name*: **Battle - Nopon All Attack**
+
+Unknown. Related to future connected. - Hardcoded row IDs.
+
+| Column           | Type      | Description           | Handled by |
+|------------------|-----------|-----------------------|------------|
+| `target_version` | `uint8`   | Unknown. 1.1.2 is 8.  | `game::NoponBattle::setupEvent`, `game::BdatBtlNoponAllAtk::isVersionMatch`  |
+| `normal_val`     | `uint16`  | Unknown.              | `game::BdatBtlNoponAllAtk::getIntVal`  |
+| `extra_val`      | `uint16`  | Unknown.              | `game::BdatBtlNoponAllAtk::getIntVal`  |
+| `all_val`        | `uint16`  | Unknown.              | `game::NoponBattle::setupEvent`        |
+
+---
+
+### BTL_noponBaseData
+
+*Human Readable Name*: **Battle - Nopon Base Data**
+
+`MsTextId` linked to `MNU_nopon_ms`.
+
+Related to Future Connected, data for nopon ponspectors.
+
+| Column            | Type      | Description           | Handled by |
+|-------------------|-----------|-----------------------|------------|
+| `nopon_id`        | `uint8`   | Nopon/PC (?) ID.             | `game::MenuSeqNoponJoinPlay::MenuSeqNoponJoinPlay`, `game::MenuIconUtil::getNoponNumber`  |
+| `nopon_role`      | `uint8`   | Nopon role.           | `game::MenuPartsNoponDetail::setPcID`  |
+| `ui_arts_text`    | `MsTextId`| Localized arts text.  | `game::MenuPartsNoponDetail::setPcID`  |
+| `ui_personal_text`| `MsTextId`| Localized personal text. | `game::MenuPartsNoponDetail::setPcID`  |
+| `ui_summary_text` | `MsTextId`| Localized summary.    | `game::MenuPartsNoponDetail::setPcID`  |
+| `ui_history`      | `uint8`   | History (?)           | `game::MenuPartsNoponDetail::setPcID`  |
+| `ui_gender`       | `uint8`   | Nopon gender.         | `game::MenuPartsNoponDetail::setPcID`  |
+| `ui_hint_sflag`   | `MsTextId`| Hint scenario flag to display.   | `game::MenuSeqNopnList::hasNoponHint`  |
+| `ui_hint_qflag`   | `MsTextId`| Hint quest flag to display.      | `game::MenuSeqNopnList::hasNoponHint`  |
+| `ui_hint_qorder`  | `MsTextId`| Hint quest order to display.     | `game::MenuSeqNopnList::hasNoponHint`  |
+
+---
+
+### BTL_noponHighTension
+
+*Human Readable Name*: **Battle - Nopon Base Data**
+
+Unknown. Related to Future Connected.
+
+| Column                 | Type      | Description              | Handled by |
+|------------------------|-----------|--------------------------|------------|
+| `enter_combat_just_l`  | `uint8`   | ?                        | `game::NoponBattle::procButtonChallengeResult_highTension` |
+| `enter_combat_just_h`  | `uint8`   | ?                        | `game::NoponBattle::procButtonChallengeResult_highTension` |
+| `enter_combat_normal_l`| `uint8`   | ?                        | `game::NoponBattle::procButtonChallengeResult_highTension` |
+| `enter_combat_normal_h`| `uint8`   | ?                        | `game::NoponBattle::procButtonChallengeResult_highTension` |
+| `sudden_commu_just_l`  | `uint8`   | ?                        | `game::NoponBattle::procButtonChallengeResult_highTension` |
+| `sudden_commu_just_h`  | `uint8`   | ?                        | `game::NoponBattle::procButtonChallengeResult_highTension` |
+| `sudden_commu_normal_l`| `uint8`   | ?                        | `game::NoponBattle::procButtonChallengeResult_highTension` |
+| `sudden_commu_normal_h`| `uint8`   | ?                        | `game::NoponBattle::procButtonChallengeResult_highTension` |
+
+---
+
 ## Menu Localization
 
 ### MNU_battle
@@ -1672,6 +1989,77 @@ Used by [MNU_Text_IdList](#mnu_text_idlist) to link to bdat files. **Possibly un
 | Column      | Type      | Description                | Handled by |
 |-------------|-----------|----------------------------|------------|
 | `filename`  | `string`  | Localized Bdat File name.  | `game::UIDataLibrary::getTextFromTextIdList` | 
+
+---
+
+## Colony 6 Restoration
+
+### CL6_hintlist
+
+*Human Readable Name*: **Conly 6 - Hint List**
+
+List of Colony 6 restoration hints.
+
+| Column      | Type      | Description                | Handled by |
+|-------------|-----------|----------------------------|------------|
+| `title`     | `MsTextId`| Localized hint name.       | `game::MenuPartsReviveColony6List::setupHintMode` | 
+| `type`      | `uint8`   | Possibly unused?           | | 
+| `flag`      | `uint8`   | Completion %.              | `game::MenuPartsReviveColony6List::setupHintMode` | 
+| `UID`       | `uint8`   | Possibly unused?           |  | 
+
+---
+
+### CL6_invitelist
+
+*Human Readable Name*: **Conly 6 - Invitable NPC List**
+
+List of invitable npcs to Colony 6.
+
+TODO - Unknown where this is read
+
+---
+
+### CL6_materiallist
+
+*Human Readable Name*: **Conly 6 - Material List**
+
+Colony 6 restoration material requirements. 
+
+| Column      | Type      | Description                       | Handled by |
+|-------------|-----------|-----------------------------------|------------|
+| `money`     | `uint16`  | Required money.                   | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+| `material1` | `uint16`  | [Item ID](#itm_itemlist) 1.       | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+| `number1`   | `uint16`  | Number of items 1.                | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+| `material2` | `uint16`  | [Item ID](#itm_itemlist) 2.       | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+| `number2`   | `uint16`  | Number of items 2.                | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+| `material3` | `uint16`  | [Item ID](#itm_itemlist) 3.       | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+| `number3`   | `uint16`  | Number of items 3.                | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+| `material4` | `uint16`  | [Item ID](#itm_itemlist) 4.       | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+| `number4`   | `uint16`  | Number of items 4.                | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+| `material5` | `uint16`  | [Item ID](#itm_itemlist) 5.       | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+| `number5`   | `uint16`  | Number of items 5.                | `game::MenuPartsReviveColony6Util::getRevivalNextLvRequireMaterial` | 
+
+---
+
+### CL6_rwdlist
+
+*Human Readable Name*: **Conly 6 - Reward List**
+
+Colony 6 restoration rewards. 
+
+| Column      | Type      | Description                | Handled by |
+|-------------|-----------|----------------------------|------------|
+| `itemID`    | `uint16`  | [Item ID](#itm_itemlist).  | `game::MenuPartsReviveColony6Util::getRewardItemIdLevelComplete` | 
+
+---
+
+### CL6_uplist
+
+*Human Readable Name*: **Colony 6 - Up List**
+
+Colony 6 restoration upgrade parameters (camera, etc).
+
+TODO `game::MenuPartsReviveColony6PerformLevelUpAction::setupPerformance`/`game::MenuPartsReviveColony6Util::incrementRevivalLevel`
 
 ---
 
