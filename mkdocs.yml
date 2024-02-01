@@ -51,6 +51,30 @@ nav:
     
   - XC1DE:
     - Index: xc1de/index.md
+    - Script API:
+      - OCs:
+        - Builtin: xc1de/script/oc/Builtin.md
+        - Bdat: xc1de/script/oc/Bdat.md
+        - Thread: xc1de/script/oc/Thread.md
+        # todo: msg, unit, cfp
+
+      - Plugins: 
+        - Battle: xc1de/script/plugins/Btl.md
+        - Camera: xc1de/script/plugins/Cam.md
+        - Cfs: xc1de/script/plugins/Cfs.md # todo
+        - Debug: xc1de/script/plugins/Deb.md
+        - Event: xc1de/script/plugins/Eve.md
+        - Game: xc1de/script/plugins/Game.md
+        - Help: xc1de/script/plugins/Help.md
+        - Math: xc1de/script/plugins/Math.md
+        - Pad: xc1de/script/plugins/Pad.md
+        - Sound: xc1de/script/plugins/Sound.md
+        - Time: xc1de/script/plugins/Time.md
+        - UI: xc1de/script/plugins/Ui.md
+        - Unit: xc1de/script/plugins/Unit.md
+        - Voice: xc1de/script/plugins/Voice.md
+        - Wait: xc1de/script/plugins/Wait.md
+
     - Bdat:
       - bdat_common: xc1de/tables/bdat_common.md
 
