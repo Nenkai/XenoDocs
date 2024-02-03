@@ -2,7 +2,7 @@
 
 ---
 
-## Constructor
+## :material-new-box: Constructor
 
 `oc thread(function entrypoint, string name = "")`
 
@@ -10,39 +10,50 @@ Creates a new thread.
 
 ---
 
+
 ## Methods
 
-### start
+### :material-function: start
 
 `void thread->start()`
 
 Starts the thread.
 
-### end
+---
+
+### :material-function: end
 
 `void thread->end()`
 
 Ends the thread.
 
-### isAlive
+---
+
+### :material-function: isAlive
 
 `bool thread->isAlive()`
 
 Returns whether the thread is alive/active.
 
-### join
+---
+
+### :material-function: join
 
 `void thread->join()`
 
 Waits until the thread terminates.
 
-### sleep
+---
+
+### :material-function: sleep
 
 `bool thread->sleep()`
 
 Puts the thread to sleep.
 
-### wakeup
+---
+
+### :material-function: wakeup
 
 `bool thread->wakeup()`
 

@@ -15,7 +15,6 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
-    - navigation.footer
     - navigation.top
     - navigation.instant
     - navigation.instant.progress
@@ -53,15 +52,23 @@ nav:
     - Index: xc1de/index.md
     - Script API:
       - OCs:
-        - Builtin: xc1de/script/oc/Builtin.md
+        - Attribute: xc1de/script/oc/Attr.md
+        - Battle Unit: xc1de/script/oc/Unit.md
         - Bdat: xc1de/script/oc/Bdat.md
+        - Cfp: xc1de/script/oc/Cfp.md
+        - Builtin: xc1de/script/oc/Builtin.md
+        - Effect: xc1de/script/oc/Effect.md
+        - MsgNpc: xc1de/script/oc/MsgNpc.md
+        - MsgYuka: xc1de/script/oc/MsgYuka.md
+        - Object: xc1de/script/oc/Obj.md
+        - Point: xc1de/script/oc/Point.md
         - Thread: xc1de/script/oc/Thread.md
-        # todo: msg, unit, cfp
+
 
       - Plugins: 
         - Battle: xc1de/script/plugins/Btl.md
         - Camera: xc1de/script/plugins/Cam.md
-        - Cfs: xc1de/script/plugins/Cfs.md # todo
+        - Cfs: xc1de/script/plugins/Cfs.md
         - Debug: xc1de/script/plugins/Deb.md
         - Event: xc1de/script/plugins/Eve.md
         - Game: xc1de/script/plugins/Game.md

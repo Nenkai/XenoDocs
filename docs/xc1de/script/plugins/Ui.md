@@ -8,7 +8,7 @@ UI Plugin API.
 
 `void ui@winTalk(int unk, string unk2)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -46,7 +46,7 @@ Shows text on-screen without a dialog or name. ID will map to bdat file [script_
 
 `void ui@fadeIn(int unk, int unk2 = 0)`
 
-Dummy Function.
+:warning: Dummy function.
 
 ---
 
@@ -54,7 +54,7 @@ Dummy Function.
 
 `void ui@fadeOut(int unk, int unk2 = 0)`
 
-Dummy Function.
+:warning: Dummy function.
 
 ---
 
@@ -62,7 +62,7 @@ Dummy Function.
 
 `void ui@fadeWait()`
 
-Dummy Function.
+:warning: Dummy function.
 
 ---
 
@@ -95,7 +95,7 @@ Creates & processes a colony 6 npc invitation. ID is [FLD_npclist](../../tables/
 
 `void ui@createCol6Init()`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -111,7 +111,7 @@ Opens Colony 6 attack ui if one is expected. Calls `game::ScriptUI::openIfColony
 
 `void ui@simpleEventStart()`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -119,7 +119,7 @@ Dummy function.
 
 `void ui@simpleEventEnd()`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -187,7 +187,7 @@ Shows an art unlocked message.
 
 `int ui@mesAddPT(int unk)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -195,7 +195,7 @@ Dummy function.
 
 `int ui@mesSubPT(int unk)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -203,7 +203,7 @@ Dummy function.
 
 `int ui@mesVisionON()`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -211,7 +211,7 @@ Dummy function.
 
 `void ui@mesVisionOFF()`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -219,7 +219,7 @@ Dummy function.
 
 `void ui@mesMonadoON()`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -227,7 +227,7 @@ Dummy function.
 
 `void ui@mesMonadoOFF()`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -299,7 +299,7 @@ Returns whether talk voice is ongoing.
 
 `void ui@setSETalkVoiceWait()`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -307,7 +307,7 @@ Dummy function.
 
 `void ui@clearSETalkVoiceWait()`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 

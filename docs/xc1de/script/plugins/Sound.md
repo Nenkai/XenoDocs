@@ -8,7 +8,7 @@ Sound Plugin API.
 
 `void sound@playBgm(int bgmId, float fadetime, bool flag = false)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -16,7 +16,7 @@ Dummy function.
 
 `void sound@stopBgm(float fadetime)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -64,7 +64,7 @@ Forces field background music regardless of context.
 
 `void sound@stopBgm(float unk, float unk2 = 0)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -80,7 +80,7 @@ Plays a voice file.
 
 `void sound@stopVoice(string voiceName = nil)`
  
-Dummy function.
+:warning: Dummy function.
 
 ---
 

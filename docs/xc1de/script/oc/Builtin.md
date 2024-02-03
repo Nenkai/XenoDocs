@@ -6,19 +6,23 @@ Applies to ALL OCs.
 
 ## Methods
 
-### isExistProperty
+### :material-function: isExistProperty
 
 `bool obj->isExistProperty(string propertyName)`
 
 Returns whether the specified property for the object exists.
 
-### isExistSelector
+---
+
+### :material-function: isExistSelector
 
 `bool obj->isExistSelector(string propertyName)`
 
 Returns whether the specified selector for the object exists.
 
-### getOCName
+---
+
+### :material-function: getOCName
 
 `bool obj->getOCName()`
 

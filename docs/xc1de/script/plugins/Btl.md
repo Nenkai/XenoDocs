@@ -8,7 +8,7 @@ Battle Plugin API.
 
 `void btl@startObserve()`
 
-Unknown. Calls `game@ScriptBtl@setMonitorEnemyKill(true)` internally.
+Unknown. Calls `game::ScriptBtl::setMonitorEnemyKill(true)` internally.
 
 ---
 
@@ -16,7 +16,7 @@ Unknown. Calls `game@ScriptBtl@setMonitorEnemyKill(true)` internally.
 
 `void btl@endObserve()`
 
-Unknown. Calls `game@ScriptBtl@setMonitorEnemyKill(false)` internally.
+Unknown. Calls `game::ScriptBtl::setMonitorEnemyKill(false)` internally.
 
 ---
 
@@ -48,7 +48,7 @@ Does nothing. Empty function.
 
 `bool btl@attack(bool flag = true)`
 
-Calls `game@ScriptBtl@attack` which does nothing. Empty function.
+Calls `game::ScriptBtl::attack` which does nothing. Empty function.
 
 ---
 
@@ -66,7 +66,7 @@ Does nothing. Empty function.
 
 `bool btl@selectTgt(oc targetObject = nil)`
 
-Selects battle target. Calls `game@ScriptBtl@startBattle` (with a specified target if provided - might not be used).
+Selects battle target. Calls `game::ScriptBtl::startBattle` (with a specified target if provided - might not be used).
 
 ---
 
@@ -90,7 +90,7 @@ Does nothing. Empty function.
 
 `bool btl@isVoiceEvent()`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -98,7 +98,7 @@ Dummy function.
 
 `void btl@unlockMonadoArts()`
 
-Unlocks monado arts & allows upgrading to advanced levels. Calls `game@ScriptCfs@unlockMonadoArts`.
+Unlocks monado arts & allows upgrading to advanced levels. Calls `game::ScriptCfs::unlockMonadoArts`.
 
 ---
 
@@ -106,7 +106,7 @@ Unlocks monado arts & allows upgrading to advanced levels. Calls `game@ScriptCfs
 
 `void btl@setTensionLv(int level = 0)`
 
-Sets the battle tension level. Calls `game@ScriptBtl@setTensionLv`.
+Sets the battle tension level. Calls `game::ScriptBtl::setTensionLv`.
 
 ---
 
@@ -115,7 +115,7 @@ Sets the battle tension level. Calls `game@ScriptBtl@setTensionLv`.
 
 `void btl@setTensionLvOA(int level = 0)`
 
-Sets the battle tension level 'only arrive'. Calls `game@ScriptBtl@setTensionLvOnlyArrive`.
+Sets the battle tension level 'only arrive'. Calls `game::ScriptBtl::setTensionLvOnlyArrive`.
 
 ---
 
@@ -123,7 +123,7 @@ Sets the battle tension level 'only arrive'. Calls `game@ScriptBtl@setTensionLvO
 
 `int btl@getTensionLv()`
 
-Gets the battle tension. Calls `game@ScriptBtl@getTensionLv`.
+Gets the battle tension. Calls `game::ScriptBtl::getTensionLv`.
 
 ---
 
@@ -131,7 +131,7 @@ Gets the battle tension. Calls `game@ScriptBtl@getTensionLv`.
 
 `void btl@setTP(int tp = 100, int pcIdMaybe = 0)`
 
-Sets TP. Calls `game@ScriptBtl@setTP`.
+Sets TP. Calls `game::ScriptBtl::setTP`.
 
 ---
 
@@ -139,7 +139,7 @@ Sets TP. Calls `game@ScriptBtl@setTP`.
 
 `void btl@breakVision(int unk = 0)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -147,7 +147,7 @@ Dummy function.
 
 `void btl@setPTG(int ptyGauge)`
 
-Sets Party Gauge. Calls `game@ScriptBtl@setPartyGauge`.
+Sets Party Gauge. Calls `game::ScriptBtl::setPartyGauge`.
 
 ---
 
@@ -155,7 +155,7 @@ Sets Party Gauge. Calls `game@ScriptBtl@setPartyGauge`.
 
 `int btl@getPTG()`
 
-Gets Party Gauge. Calls `game@ScriptBtl@getPartyGauge`.
+Gets Party Gauge. Calls `game::ScriptBtl::getPartyGauge`.
 
 ---
 
@@ -163,7 +163,7 @@ Gets Party Gauge. Calls `game@ScriptBtl@getPartyGauge`.
 
 `bool btl@isPcExtinction()`
 
-Unknown (return death status?). Calls `game@ScriptBtl@isPcExtinction`.
+Unknown (return death status?). Calls `game::ScriptBtl::isPcExtinction`.
 
 ---
 
@@ -171,4 +171,4 @@ Unknown (return death status?). Calls `game@ScriptBtl@isPcExtinction`.
 
 `bool btl@test()`
 
-Dummy function.
+:warning: Dummy function.

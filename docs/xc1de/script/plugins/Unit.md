@@ -8,7 +8,7 @@ Battle Unit Plugin API.
 
 `int unit@getPcHp(int pc)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -16,7 +16,7 @@ Dummy function.
 
 `int unit@getPcHpRate(int pc)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -64,7 +64,7 @@ Checks if the battle state of a player character exists. Calls `game::ScriptUnit
 
 `void unit@clearPcBtlState(int bdid, int state)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -88,7 +88,7 @@ Clears the battle state of a battle enemy. Calls `game::ScriptUnit::clearEneBtlS
 
 `int unit@onPcArtsAttack(int bdid, int state)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 

@@ -24,7 +24,7 @@ Sets flag value.
 
 `int eve@getAwardFlagF16(int unk)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -32,7 +32,7 @@ Dummy function.
 
 `void eve@addAwardFlagF16(int unk, int unk2 = 0)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
@@ -116,7 +116,7 @@ Unknown. Returns status of `game::ScriptCfs::isFieldTalking`.
 
 `bool eve@isTalkEvent()`
 
-Dummy function. Always returns false.
+:warning: Dummy function. Always returns false.
 
 ---
 
@@ -124,7 +124,7 @@ Dummy function. Always returns false.
 
 `nil eve@isTalkEvent()`
 
-Dummy function. Always returns nil.
+:warning: Dummy function. Always returns nil.
 
 ---
 

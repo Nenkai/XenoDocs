@@ -8,7 +8,7 @@ Pad Plugin API.
 
 `int pad@get(int unk = 0)`
 
-Dummy function.
+:warning: Dummy function.
 
 ---
 
